@@ -24,8 +24,9 @@ const Input = ({ placeholder, type, label, value, onChange }: Props) => {
 
   return (
     <div>
-      <p>{type === "date" && label}</p>
+      <p className="my-0.5">{type === "date" && label}</p>
       <input
+        className="shadow-xl"
         onBlur={handleBlur}
         onChange={handleChange}
         placeholder={placeholder}
