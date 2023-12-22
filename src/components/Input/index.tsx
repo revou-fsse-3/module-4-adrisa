@@ -6,10 +6,11 @@ interface Props {
   type: string;
   value: string | undefined;
   label?: string;
-  onChange: React.Dispatch<React.SetStateAction<string | undefined>>;
+  onChange: any;
+  name: string | undefined;
 }
 
-const Input = ({ placeholder, type, label, value, onChange }: Props) => {
+const Input = ({ placeholder, type, label, value, onChange, name }: Props) => {
   const [_, setUserInput] = useState<string>("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,6 +33,7 @@ const Input = ({ placeholder, type, label, value, onChange }: Props) => {
         placeholder={placeholder}
         type={type}
         defaultValue={value}
+        name={name}
       />
     </div>
   );

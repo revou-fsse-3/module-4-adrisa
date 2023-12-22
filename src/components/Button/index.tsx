@@ -3,15 +3,11 @@ import { useState } from "react";
 import "./Button.module.css";
 
 interface Props {
-  onClick: () => void | number;
-  value: string;
-  disable?: boolean;
+  onClick?: () => void | number;
+  type: any;
+  label: any;
 }
-const Button = ({ onClick, value, disable }: Props) => {
-  const handleClick = (event: React.FormEvent<HTMLInputElement>) => {
-    onClick();
-  };
-
+const Button = ({ onClick, type, label }: Props) => {
   const [isMouseOver, setMouseOver] = useState<boolean>(false);
 
   const handleMouseout = () => {
@@ -23,15 +19,18 @@ const Button = ({ onClick, value, disable }: Props) => {
   };
   return (
     <div>
-      <input
-        className={isMouseOver ? style.buttonMOver : style.buttonMOut}
+      <button
+        className={`${
+          isMouseOver ? style.buttonMOver : style.buttonMOut
+        } bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"`}
+        // label={label}
+        type={type}
         onMouseOut={handleMouseout}
         onMouseOver={handleMouseOver}
-        onClick={handleClick}
-        type="submit"
-        value={value}
-        disabled={disable}
-      />
+        onClick={onClick}
+      >
+        {label}
+      </button>
     </div>
   );
 };

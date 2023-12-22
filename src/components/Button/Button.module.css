@@ -1,19 +1,18 @@
 .buttonMOver {
   color: rgb(223, 230, 233);
   background-color: rgb(45, 52, 54);
-  padding: 10px;
-  margin: 10px;
-  border-radius: 10px;
-  border-color: transparent;
-  font-weight: bold;
 }
 
 .buttonMOut {
   color: rgb(45, 52, 54);
   background-color: rgb(223, 230, 233);
+}
+
+button {
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
   border-color: transparent;
   font-weight: bold;
+  width: 100px;
 }
