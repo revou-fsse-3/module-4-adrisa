@@ -11,18 +11,6 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 const App = () => {
-  const fetchImages = async () => {
-    const iamgeResponse = await fetch(
-      "https://jsonplaceholder.typicode.com/users"
-    );
-    const images = await iamgeResponse.json();
-    console.log(images);
-  };
-
-  useEffect(() => {
-    fetchImages();
-  }, []);
-
   return (
     <Routes>
       <Route path="/" element={<Navigation />}>
@@ -30,7 +18,10 @@ const App = () => {
         <Route path="sign-in" element={<LoginPage />} />
         <Route path="sign-up" element={<RegisterPage />} />
         <Route path="simulation" element={<SimulationPage />} />
-        <Route path="category" element={<CategoryPage />} />
+        <Route path="category" element={<CategoryPage />}>
+          {/* <Route path="/add" element={<Add />} />
+          <Route path="/edit/:id" element={<Edit />} /> */}
+        </Route>
       </Route>
     </Routes>
   );
