@@ -39,6 +39,8 @@ const RegisterPage = () => {
       submitSignUp(values);
       console.log(values);
       resetForm();
+      alert("Sip mantap udah bikin akun!")
+      
     },
     validationSchema: yup.object({
       name: yup
