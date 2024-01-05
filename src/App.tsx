@@ -1,54 +1,38 @@
 import {
-  PersonalInformation,
-  AddressInformation,
-  AccountInformation,
-} from "./containers";
-import React, { useState } from "react";
-import { Card } from "./components";
+  SimulationPage,
+  CategoryPage,
+  HomePage,
+  LoginPage,
+  Navigation,
+  RegisterPage,
+} from "./router";
+import { Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 const App = () => {
-  const [step, setStep] = useState<number>(1);
-
-  const handleNext = () => {
-    if (step === 3) {
-      handleFormSubmit();
-    } else setStep((prevState) => prevState + 1);
+  const fetchImages = async () => {
+    const iamgeResponse = await fetch(
+      "https://jsonplaceholder.typicode.com/users"
+    );
+    const images = await iamgeResponse.json();
+    console.log(images);
   };
 
-  const handleFormSubmit = () => {
-    console.log();
-  };
-  // const [page, setPage] = useState<number>(1);
-
-  // const increase = () => {
-  //   setPage((page) => (page < 3 ? page + 1 : 3));
-  // };
-  const decrease = () => {
-    setStep((step) => (step > 1 ? step - 1 : 1));
-  };
-  // console.log(page);
+  useEffect(() => {
+    fetchImages();
+  }, []);
 
   return (
-    <div>
-      <Card>
-        {step === 1 && (
-          <div>
-            <PersonalInformation onNext={handleNext} />
-          </div>
-        )}
-        {step === 2 && (
-          <div>
-            <AddressInformation handleBack={decrease} onNext={handleNext} />
-          </div>
-        )}
-        {step === 3 && (
-          <div>
-            <AccountInformation handleBack={decrease} onNext={handleNext} />
-          </div>
-        )}
-      </Card>
-    </div>
+    <Routes>
+      <Route path="/" element={<Navigation />}>
+        <Route index element={<HomePage />} />
+        <Route path="sign-in" element={<LoginPage />} />
+        <Route path="sign-up" element={<RegisterPage />} />
+        <Route path="simulation" element={<SimulationPage />} />
+        <Route path="category" element={<CategoryPage />} />
+      </Route>
+    </Routes>
   );
 };
 
