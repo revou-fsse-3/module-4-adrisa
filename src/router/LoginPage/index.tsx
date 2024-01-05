@@ -41,6 +41,7 @@ const RegisterPage = () => {
       console.log(values);
       submitSignIn(values);
       resetForm();
+      alert("Gass daftarkan kategorimu")
     },
     validationSchema: yup.object({
       email: yup
